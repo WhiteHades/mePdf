@@ -14,6 +14,7 @@ build actually consumes it.
 | Android SDK | API 36 | Android SDK license | Build platform/framework interface | Local prerequisite |
 | Android NDK | 28.2.13676358 | Android SDK license and component notices | Native toolchain | Local prerequisite |
 | CMake | 3.22.1 | BSD-3-Clause | Native build tool; not packaged | Local prerequisite |
+| CycloneDX Gradle plugin | 3.3.0 | Apache-2.0 | SBOM build plugin; not packaged | Verified pin |
 
 The current APK contains only project code plus Android platform/native runtime
 references. It has no network, telemetry, advertising, account, payment, PDF,
