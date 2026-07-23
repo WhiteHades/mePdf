@@ -16,6 +16,14 @@
 The Gradle wrapper validates its downloaded distribution with the SHA-256 in
 `gradle/wrapper/gradle-wrapper.properties`.
 
+Generate the aggregate CycloneDX SBOM with:
+
+```sh
+./gradlew --no-daemon cyclonedxBom
+```
+
+The JSON and XML documents are written under `build/reports/cyclonedx/`.
+
 ## Host native verification
 
 Keep task artifacts inside the repository and remove them when finished:
