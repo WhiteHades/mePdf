@@ -38,8 +38,8 @@ The selected open mobile stack does not honestly guarantee:
 - Reliable fully on-device Office-to-PDF conversion.
 - Faithful editing of every malformed, encrypted, signed, or adversarial PDF.
 
-Unsupported documents must be rejected before mutation; limitations will not be
-hidden behind optimistic UI copy.
+Unsupported documents must be rejected before an operation is applied to the
+working copy; limitations will not be hidden behind optimistic UI copy.
 
 ## Architecture
 
@@ -67,9 +67,7 @@ Requirements:
 Run the host C test and Android build:
 
 ```sh
-cmake -S . -B .tmp/native-build -G Ninja -DCMAKE_BUILD_TYPE=Debug
-cmake --build .tmp/native-build
-ctest --test-dir .tmp/native-build --output-on-failure
+./scripts/verify-native.sh
 ./gradlew --no-daemon :app:assembleDebug
 ```
 
