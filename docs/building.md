@@ -1,6 +1,6 @@
 # Building mePdf
 
-## Pinned toolchain
+## Declared toolchain
 
 | Input | Version |
 | --- | --- |
@@ -14,7 +14,8 @@
 | C language | C17 |
 
 The Gradle wrapper validates its downloaded distribution with the SHA-256 in
-`gradle/wrapper/gradle-wrapper.properties`.
+`gradle/wrapper/gradle-wrapper.properties`. Resolved plugin and Maven artifact
+bytes are not yet locked; issue #2 remains open on that evidence.
 
 Generate the aggregate CycloneDX SBOM with:
 
@@ -29,9 +30,7 @@ The JSON and XML documents are written under `build/reports/cyclonedx/`.
 Keep task artifacts inside the repository and remove them when finished:
 
 ```sh
-cmake -S . -B .tmp/native-build -G Ninja -DCMAKE_BUILD_TYPE=Debug
-cmake --build .tmp/native-build
-ctest --test-dir .tmp/native-build --output-on-failure
+./scripts/verify-native.sh
 rm -rf .tmp/native-build
 ```
 
@@ -50,7 +49,9 @@ for Android 16 KB page-size compatibility.
 
 ## Current reproducibility boundary
 
-The build inputs are pinned, but a bit-for-bit reproducible signed release has
-not been proven. Debug signing and Android packaging metadata are outside the
-current evidence. Issue #2 remains open until release artifacts are rebuilt in
-clean environments, compared, and matched to an SBOM and exact source revision.
+The current unsigned APK reproduced byte-for-byte across two clean builds in
+one local environment. CI actions and Java are pinned, but the GitHub runner
+image and its host CMake/Ninja packages are not immutable. Cross-environment
+reproducibility and a reproducible signed release have not been proven. Issue
+#2 remains open until release artifacts are rebuilt in independent immutable
+environments, compared, and matched to an SBOM and exact source revision.
