@@ -21,15 +21,15 @@ baseline, and use MuPDF's OpenSSL PKCS#7 helper for basic certificate signing
 and verification. Do not add PDFium or QPDF to the initial runtime.
 
 This recommendation keeps the accepted ADR intact and minimizes a dangerous
-failure mode: two PDF engines parsing, mutating, and serializing the same
-working copy differently.
+failure mode: two PDF engines interpreting a working copy, applying operations,
+and producing committed output differently.
 
 ## Engine comparison
 
 | Candidate | Actual implementation boundary | Relevant capability | Decision |
 | --- | --- | --- | --- |
 | [MuPDF 1.28.0][mupdf-license] | C implementation and C API; AGPL or commercial | Rendering, text extraction, annotations, AcroForms, page operations, applied redaction, signing/verification hooks, OCR integration, encryption, incremental/full writes | Select as the only PDF engine |
-| [PDFium][pdfium-license] | Public `extern "C"` API over a C++ implementation; BSD-style license | Strong rendering, form-fill environment, annotations, and page-object primitives | Reject: weaker language fit and still requires substantial signing, encryption-authoring, redaction, and save orchestration |
+| [PDFium][pdfium-license] | Public `extern "C"` API over a C++ implementation; BSD-style license | Strong rendering, form-fill environment, annotations, and page-object primitives | Reject: weaker language fit and still requires substantial signing, encryption-authoring, redaction, and commit orchestration |
 | [QPDF][qpdf-readme] | C++ library with job/C wrappers; Apache-2.0 | Structural transformations, repair, encryption, object streams, and linearization | Reject initially: it does not render and deliberately does not interpret content-stream semantics |
 
 MuPDF's 1.28.0 release is dated 2026-06-26
