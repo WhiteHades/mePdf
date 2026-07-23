@@ -27,3 +27,8 @@ jobs:
 
       - name: Build Android debug APK
         run: ./gradlew --no-daemon :app:assembleDebug
+
+      - name: Generate SBOM
+        run: |
+          ./gradlew --no-daemon cyclonedxBom
+          test -s build/reports/cyclonedx/bom.json
