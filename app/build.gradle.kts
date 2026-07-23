@@ -2,9 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+group = "org.mepdf"
+version = "0.1.0"
+
 android {
     namespace = "org.mepdf.app"
     compileSdk = 36
+    buildToolsVersion = "36.0.0"
     ndkVersion = "28.2.13676358"
 
     defaultConfig {
