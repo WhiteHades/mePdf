@@ -25,7 +25,7 @@ OCR, or model dependency.
 | --- | --- | --- | --- |
 | MuPDF | 1.28.0 | AGPL-3.0-or-later | Build from pinned corresponding source; retain notices and publish complete source/build scripts |
 | ONNX Runtime | To be pinned | MIT | Audit Android artifact contents and third-party notices before inclusion |
-| PP-OCRv6-small models | To be pinned by checksum | Unresolved | Confirm model-specific redistribution terms from primary sources before inclusion |
+| PP-OCRv6-small detector and recognizer ONNX models | Exact files to be pinned by checksum | Apache-2.0 on both first-party model cards | Retain each license and notice; record source URLs and SHA-256 before inclusion |
 | OpenCV core/imgproc helper | To be pinned if required | Apache-2.0 | Keep the private C interface narrow and disclose the C++ implementation |
 
 No planned dependency may enter the build while its version, source, license,
@@ -33,7 +33,7 @@ notices, and artifact contents are unresolved.
 
 ## Remaining gate evidence
 
-- Resolve and document model-specific redistribution terms.
+- Resolve redistribution terms for every optional model pack separately.
 - Generate a machine-readable SBOM from the actual release artifact.
 - Record native transitive libraries and Maven artifact contents.
 - Rebuild signed release artifacts in clean environments and compare hashes.
