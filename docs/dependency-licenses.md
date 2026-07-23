@@ -15,10 +15,12 @@ build actually consumes it.
 | Android NDK | 28.2.13676358 | Android SDK license and component notices | Native toolchain | Local prerequisite |
 | CMake | 3.22.1 | BSD-3-Clause | Native build tool; not packaged | Local prerequisite |
 | CycloneDX Gradle plugin | 3.3.0 | Apache-2.0 | SBOM build plugin; not packaged | Verified pin |
+| Kotlin standard library | 2.2.10 | Apache-2.0 | Runtime graph; builtins are packaged in the APK | Included |
+| JetBrains annotations | 13.0 | Apache-2.0 | Kotlin runtime transitive dependency | Included in runtime graph |
 
-The current APK contains only project code plus Android platform/native runtime
-references. It has no network, telemetry, advertising, account, payment, PDF,
-OCR, or model dependency.
+The current APK contains project code, Kotlin standard-library builtins, and
+Android platform/native runtime references. It has no network, telemetry,
+advertising, account, payment, PDF, OCR, or model dependency.
 
 ## Planned, not yet included
 
@@ -35,7 +37,8 @@ notices, and artifact contents are unresolved.
 ## Remaining gate evidence
 
 - Resolve redistribution terms for every optional model pack separately.
-- Generate a machine-readable SBOM from the actual release artifact.
+- Extend the generated SBOM with native and model components as they enter the
+  artifact.
 - Record native transitive libraries and Maven artifact contents.
 - Rebuild signed release artifacts in clean environments and compare hashes.
 - Publish exact corresponding source and third-party notices for every release.
